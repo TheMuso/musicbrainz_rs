@@ -29,6 +29,7 @@ tokio = { version = "1.24", features = ["macros", "rt", "rt-multi-thread"]}
 
 [features]
 default = ["reqwest/default-tls", "async"]
+default-tls = ["reqwest/default-tls"]
 async = ["wasm-timer"]
 rustls = ["reqwest/rustls"]
 blocking = ["reqwest/blocking"]
