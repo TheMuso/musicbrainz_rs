@@ -70,7 +70,7 @@ async fn should_get_artist_by_id() {
             }),
             life_span: Some(LifeSpan {
                 ended: Some(true),
-                begin: Some(NaiveDate::from_ymd_opt(1988, 1, 1).unwrap()),
+                begin: Some(NaiveDate::from_ymd_opt(1987, 1, 1).unwrap()),
                 end: Some(NaiveDate::from_ymd_opt(1994, 4, 5).unwrap()),
             }),
             tags: None,
