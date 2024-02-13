@@ -70,6 +70,7 @@ pub type Error = reqwest::Error;
 #[derive(Clone, Debug)]
 struct Query<T> {
     path: String,
+    parameters: &'static str,
     include: Vec<Include>,
     phantom: PhantomData<T>,
 }
@@ -276,6 +277,10 @@ where
         T: Fetch<'a> + DeserializeOwned,
     {
         self.0.path.push_str(FMT_JSON);
+        if !self.0.parameters.is_empty() {
+            self.0.path.push_str(self.0.parameters);
+        }
+
         self.include_to_path();
         let request = HTTP_CLIENT.get(&self.0.path);
         HTTP_CLIENT.send_with_retries(request)?.json()
@@ -287,6 +292,10 @@ where
         T: Fetch<'a> + DeserializeOwned,
     {
         self.0.path.push_str(FMT_JSON);
+        if !self.0.parameters.is_empty() {
+            self.0.path.push_str(self.0.parameters);
+        }
+
         self.include_to_path();
         let request = HTTP_CLIENT.get(&self.0.path);
         HTTP_CLIENT.send_with_retries(request).await?.json().await
@@ -491,12 +500,15 @@ pub trait Path<'a> {
 
 /// Implemented by all fetchable entities (see [`FetchQuery`])
 pub trait Fetch<'a> {
+    const FETCH_PARAMETERS: &'static str = "";
+
     fn fetch() -> FetchQuery<Self>
     where
         Self: Sized + Path<'a>,
     {
         FetchQuery(Query {
             path: format!("{}/{}", BASE_URL, Self::path()),
+            parameters: Self::FETCH_PARAMETERS,
             phantom: PhantomData,
             include: vec![],
         })
@@ -544,6 +556,7 @@ pub trait Browse<'a> {
         BrowseQuery {
             inner: Query {
                 path: format!("{}/{}", BASE_URL, Self::path()),
+                parameters: "",
                 phantom: PhantomData,
                 include: vec![],
             },
@@ -561,6 +574,7 @@ pub trait Search<'a> {
     {
         SearchQuery(Query {
             path: format!("{}/{}{}&{}", BASE_URL, Self::path(), FMT_JSON, query),
+            parameters: "",
             phantom: PhantomData,
             include: vec![],
         })
