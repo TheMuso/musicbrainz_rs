@@ -5,6 +5,7 @@ use musicbrainz_rs::entity::area::AreaType::*;
 use musicbrainz_rs::entity::area::*;
 use musicbrainz_rs::entity::artist::ArtistType::*;
 use musicbrainz_rs::entity::artist::*;
+use musicbrainz_rs::entity::disc_id::DiscId;
 use musicbrainz_rs::entity::event::{Event, EventType};
 use musicbrainz_rs::entity::instrument::InstrumentType::*;
 use musicbrainz_rs::entity::instrument::*;
@@ -467,6 +468,65 @@ fn should_get_url() {
             resource: "http://www.svinkels.com/".to_string(),
             id: "9237f6da-fec6-4b8a-9d52-c7c18e0e2630".to_string(),
             tags: None,
+        }
+    );
+}
+
+#[test]
+fn should_get_disc_id() {
+    let wild_fm_vol_8_1 = DiscId::fetch().id("iJlSoVM7NBsgW1wrTKA6n_A6Y9g-").execute();
+
+    assert_eq!(
+        wild_fm_vol_8_1.unwrap(),
+        DiscId {
+            id: "iJlSoVM7NBsgW1wrTKA6n_A6Y9g-".to_string(),
+            offset_count: 19,
+            sectors: 325402,
+            offsets: vec![
+                150, 28367, 43000, 58760, 73117, 89902, 106554, 123170, 141205, 156112, 171945,
+                187505, 204360, 219992, 239332, 255772, 274312, 289762, 304907
+            ],
+            releases: vec![Release {
+                id: "43ef0a7b-fb30-4a8e-8f3f-389b40380421".to_string(),
+                title: "Wild, Volume 8".to_string(),
+                status_id: Some("4e304316-386d-3409-af2e-78857eec5cfe".to_string()),
+                status: Some(ReleaseStatus::Official),
+                date: NaiveDate::from_ymd_opt(1999, 1, 1),
+                country: Some("AU".to_string()),
+                quality: Some(ReleaseQuality::Normal),
+                barcode: Some("5021456097715".to_string()),
+                disambiguation: Some("".to_string()),
+                packaging_id: Some("ec27701a-4a22-37f4-bfac-6616e0f9750a".to_string()),
+                packaging: Some(ReleasePackaging::JewelCase),
+                relations: None,
+                release_group: None,
+                artist_credit: None,
+                media: Some(vec![
+                    Media {
+                        title: Some("".to_string()),
+                        position: Some(1),
+                        track_count: 19,
+                        disc_count: None,
+                        format_id: Some("9712d52a-4509-3d4b-a1a2-67c88c643e31".to_string()),
+                        format: Some("CD".to_string()),
+                        tracks: None,
+                    },
+                    Media {
+                        title: Some("".to_string()),
+                        position: Some(2),
+                        track_count: 20,
+                        disc_count: None,
+                        format_id: Some("9712d52a-4509-3d4b-a1a2-67c88c643e31".to_string()),
+                        format: Some("CD".to_string()),
+                        tracks: None,
+                    }
+                ]),
+                label_info: None,
+                tags: None,
+                aliases: None,
+                genres: None,
+                annotation: None,
+            }]
         }
     );
 }
