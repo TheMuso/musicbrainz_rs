@@ -6,6 +6,7 @@ use super::{Include, Relationship, Subquery};
 use crate::date_format;
 use crate::entity::alias::Alias;
 use crate::entity::artist_credit::ArtistCredit;
+use crate::entity::disc::Disc;
 use crate::entity::genre::Genre;
 use crate::entity::label::LabelInfo;
 use crate::entity::recording::Recording;
@@ -223,6 +224,7 @@ pub struct Media {
     pub disc_count: Option<u32>,
     pub format_id: Option<String>,
     pub format: Option<String>,
+    pub discs: Option<Vec<Disc>>,
     pub tracks: Option<Vec<Track>>,
 }
 

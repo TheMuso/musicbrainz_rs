@@ -88,6 +88,7 @@ pub mod artist;
 pub mod artist_credit;
 pub mod cdstub;
 pub mod coverart;
+pub mod disc;
 pub mod disc_id;
 pub mod event;
 pub mod genre;
