@@ -365,5 +365,6 @@ impl_includes!(
         with_artist_credits,
         Include::Subquery(Subquery::ArtistCredits)
     ),
-    (with_isrcs, Include::Subquery(Subquery::ISRCs))
+    (with_isrcs, Include::Subquery(Subquery::ISRCs)),
+    (with_disc_ids, Include::Subquery(Subquery::DiscIds))
 );
