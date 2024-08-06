@@ -51,7 +51,7 @@ pub enum EventType {
 /// An event refers to an organised event which people can attend, and is relevant to MusicBrainz.
 /// Generally this means live performances, like concerts and festivals.
 #[derive(Debug, Serialize, Deserialize, PartialEq, Clone)]
-#[serde(rename_all(deserialize = "kebab-case"))]
+#[serde(rename_all(deserialize = "kebab-case", serialize = "kebab-case"))]
 pub struct Event {
     /// See [MusicBrainz Identifier](https://musicbrainz.org/doc/MusicBrainz_Identifier).
     pub id: String,

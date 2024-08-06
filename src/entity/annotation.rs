@@ -10,7 +10,7 @@ use serde::{Deserialize, Serialize};
 /// if something is incorrect or incomplete, you can fix it. All changes are recorded and if someone
 /// deletes or defaces the annotation, you can easily restore a previous copy.
 #[derive(Debug, Serialize, Deserialize, PartialEq, Eq, Clone)]
-#[serde(rename_all(deserialize = "kebab-case"))]
+#[serde(rename_all(deserialize = "kebab-case", serialize = "kebab-case"))]
 pub struct Annotation {
     /// the annotated entity's MBID
     pub entity: String,

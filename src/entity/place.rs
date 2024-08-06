@@ -9,7 +9,7 @@ use crate::entity::BrowseBy;
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Serialize, Deserialize, PartialEq, Clone)]
-#[serde(rename_all(deserialize = "kebab-case"))]
+#[serde(rename_all(deserialize = "kebab-case", serialize = "kebab-case"))]
 pub struct Place {
     /// See [MusicBrainz Identifier](https://musicbrainz.org/doc/MusicBrainz_Identifier).
     pub id: String,

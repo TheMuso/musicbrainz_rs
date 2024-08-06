@@ -5,7 +5,7 @@ use serde::{Deserialize, Serialize};
 
 /// Disc ID is the code number which MusicBrainz uses to link a physical CD to a release listing.
 #[derive(Debug, Serialize, Deserialize, PartialEq, Clone)]
-#[serde(rename_all(deserialize = "kebab-case"))]
+#[serde(rename_all(deserialize = "kebab-case", serialize = "kebab-case"))]
 pub struct DiscId {
     /// See [MusicBrainz Disc ID](https://musicbrainz.org/doc/Disc_ID).
     pub id: String,

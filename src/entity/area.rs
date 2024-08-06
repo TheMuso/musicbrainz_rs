@@ -13,7 +13,7 @@ use serde::{Deserialize, Serialize};
 /// Areas are historical and existing geographic regions. Areas include countries, sub-divisions,
 /// counties, municipalities, cities, districts and islands.
 #[derive(Debug, Serialize, Deserialize, PartialEq, Clone, Default)]
-#[serde(rename_all(deserialize = "kebab-case"))]
+#[serde(rename_all(deserialize = "kebab-case", serialize = "kebab-case"))]
 #[serde(default)]
 pub struct Area {
     /// See [MusicBrainz Identifier](https://musicbrainz.org/doc/MusicBrainz_Identifier).

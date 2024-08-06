@@ -5,7 +5,7 @@ use serde::{Deserialize, Serialize};
 /// Aliases are used to store alternate names or misspellings. For more information and examples,
 /// see the page about [aliases](https://musicbrainz.org/doc/Aliases).
 #[derive(Debug, Serialize, Deserialize, PartialEq, Eq, Clone, Default)]
-#[serde(rename_all(deserialize = "kebab-case"))]
+#[serde(rename_all(deserialize = "kebab-case", serialize = "kebab-case"))]
 #[serde(default)]
 pub struct Alias {
     pub name: String,

@@ -32,7 +32,7 @@ use crate::entity::BrowseBy;
 /// can appear on more than one release. For example, a boxset compilation that contains previously
 /// released CDs would share the same tracklists as the separate releases.
 #[derive(Debug, Serialize, Deserialize, PartialEq, Clone)]
-#[serde(rename_all(deserialize = "kebab-case"))]
+#[serde(rename_all(deserialize = "kebab-case", serialize = "kebab-case"))]
 pub struct Release {
     /// See [MusicBrainz Identifier](https://musicbrainz.org/doc/MusicBrainz_Identifier).
     pub id: String,
@@ -120,7 +120,7 @@ pub enum Language {
 }
 
 #[derive(Debug, Serialize, Deserialize, PartialEq, Eq, Clone)]
-#[serde(rename_all(deserialize = "lowercase"))]
+#[serde(rename_all(deserialize = "lowercase", serialize = "lowercase"))]
 pub enum ReleaseQuality {
     /// The release needs serious fixes, or its existence is hard to prove (but it's not clearly fake).
     Low,
@@ -216,7 +216,7 @@ pub enum ReleasePackaging {
 }
 
 #[derive(Debug, Serialize, Deserialize, PartialEq, Clone)]
-#[serde(rename_all(deserialize = "kebab-case"))]
+#[serde(rename_all(deserialize = "kebab-case", serialize = "kebab-case"))]
 pub struct Media {
     pub title: Option<String>,
     pub position: Option<u32>,
@@ -231,7 +231,7 @@ pub struct Media {
 /// A track is the way a recording is represented on a particular release (or, more exactly, on a
 /// particular medium).
 #[derive(Debug, Serialize, Deserialize, PartialEq, Clone)]
-#[serde(rename_all(deserialize = "kebab-case"))]
+#[serde(rename_all(deserialize = "kebab-case", serialize = "kebab-case"))]
 pub struct Track {
     pub recording: Recording,
     pub title: String,

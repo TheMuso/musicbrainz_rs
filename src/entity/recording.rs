@@ -22,7 +22,7 @@ use lucene_query_builder::QueryBuilder;
 /// Generally, the audio represented by a recording corresponds to the audio at a stage in the
 /// production process before any final mastering but after any editing or mixing.
 #[derive(Debug, Serialize, Deserialize, PartialEq, Clone)]
-#[serde(rename_all(deserialize = "kebab-case"))]
+#[serde(rename_all(deserialize = "kebab-case", serialize = "kebab-case"))]
 pub struct Recording {
     /// See [MusicBrainz Identifier](https://musicbrainz.org/doc/MusicBrainz_Identifier).
     pub id: String,

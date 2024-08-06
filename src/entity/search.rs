@@ -14,7 +14,7 @@ use chrono::NaiveDateTime;
 use serde::Serialize;
 
 #[derive(Debug, Serialize, PartialEq, Eq, Clone)]
-#[serde(rename_all(deserialize = "kebab-case"))]
+#[serde(rename_all(deserialize = "kebab-case", serialize = "kebab-case"))]
 pub struct SearchResult<T> {
     pub created: NaiveDateTime,
     pub count: i32,

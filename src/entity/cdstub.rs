@@ -4,7 +4,7 @@ use serde::{Deserialize, Serialize};
 /// A CD stub is an anonymously submitted track list that contains a disc ID, barcode, comment
 /// field, and basic metadata like a release title and track names.
 #[derive(Debug, Serialize, Deserialize, PartialEq, Eq, Clone)]
-#[serde(rename_all(deserialize = "kebab-case"))]
+#[serde(rename_all(deserialize = "kebab-case", serialize = "kebab-case"))]
 pub struct CDStub {
     /// See [MusicBrainz Identifier](https://musicbrainz.org/doc/MusicBrainz_Identifier).
     pub id: String,
